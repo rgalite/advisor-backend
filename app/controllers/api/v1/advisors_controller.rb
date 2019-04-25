@@ -1,6 +1,6 @@
 class Api::V1::AdvisorsController < ApplicationController
   def index
-    render json: current_user.advisors
+    render json: current_user.advisors.order(created_at: :desc)
   end
 
   def create
