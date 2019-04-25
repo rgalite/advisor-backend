@@ -58,6 +58,6 @@ class Api::V1::AdvisorsController < ApplicationController
   end
 
   def current_advisor
-    @current_advisor ||= current_user.advisors.find(params[:id])
+    @current_advisor ||= current_user.advisors.includes(:questions).find(params[:id])
   end
 end
