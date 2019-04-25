@@ -15,18 +15,17 @@ class Api::V1::UsersController < ApplicationController
     render json: :current_user
   end
 
-  def login    
+  def login
     command = LoginCommand.call(login_params)
-    
+
     if command.failure?
-      render_error(command.errors[:command].first)
+      render_unauthorized
       return
     end
 
     render json: {
-      user: {
-        token: command.result
-      }
+      user: command.result.first,
+      token: command.result.last,
     }
   end
 

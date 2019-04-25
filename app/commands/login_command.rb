@@ -1,4 +1,4 @@
-class LoginCommand 
+class LoginCommand
   prepend SimpleCommand
 
   def initialize(params)
@@ -8,11 +8,14 @@ class LoginCommand
 
   def call
     user = User.find_by!(email: @email)
-    
+
     if user.authenticate(@password)
-      return encode_token(user_id: user.id)
+      return [user, encode_token(user_id: user.id)]
     end
 
+    errors.add(:command, :invalid_credentials)
+    nil
+  rescue ActiveRecord::RecordNotFound
     errors.add(:command, :invalid_credentials)
     nil
   end
