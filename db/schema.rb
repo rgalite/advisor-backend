@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_122313) do
+ActiveRecord::Schema.define(version: 2019_04_25_134205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "advisors", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "algolia_app_id", null: false
+    t.string "algolia_search_api_key", null: false
+    t.string "algolia_index_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.index ["user_id"], name: "index_advisors_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "advisor_id", null: false
+    t.string "content", null: false
+    t.string "algolia_facet_name", null: false
+    t.integer "sort_order", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["advisor_id", "sort_order"], name: "index_questions_on_advisor_id_and_sort_order", unique: true
+    t.index ["advisor_id"], name: "index_questions_on_advisor_id"
+    t.index ["sort_order"], name: "index_questions_on_sort_order"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

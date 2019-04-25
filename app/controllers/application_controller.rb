@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_error
+  rescue_from ActionController::ParameterMissing, with: :render_parameter_missing_error
+
   before_action :authorize_request
 
   def authorize_request
@@ -29,7 +30,7 @@ class ApplicationController < ActionController::API
     }
   end
 
-  def render_unprocessable_entity_response(error)
+  def render_unprocessable_entity_error(error)
     render json: {
       error: {
         code: 'invalid_record',
@@ -37,6 +38,15 @@ class ApplicationController < ActionController::API
         field_errors: error.record.errors.details
       }
     }, status: :unprocessable_entity
+  end
+
+  def render_parameter_missing_error(error)
+    render json: {
+      error: {
+        code: 'parameter_missing',
+        message: error.message,
+      }
+    }
   end
 
   def render_unauthorized

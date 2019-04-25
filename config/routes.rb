@@ -9,6 +9,15 @@ Rails.application.routes.draw do
           post :login
         end
       end
+
+      resources :advisors do
+        member do
+          get :questions
+          post 'questions' => 'advisors#create_question'
+        end
+      end
+
+      resources :questions, only: [:show, :update, :destroy]
     end
   end
 end
