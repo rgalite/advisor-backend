@@ -37,6 +37,12 @@ class Api::V1::AdvisorsController < ApplicationController
       :algolia_app_id,
       :algolia_search_api_key,
       :algolia_index_name,
+      :greeting_text,
+      :results_text,
+      :continue_text,
+      :results_page_text,
+      :start_over_text,
+      :results_page_url
     )
   end
 
@@ -46,6 +52,12 @@ class Api::V1::AdvisorsController < ApplicationController
       :algolia_app_id,
       :algolia_search_api_key,
       :algolia_index_name,
+      :greeting_text,
+      :results_text,
+      :continue_text,
+      :results_page_text,
+      :start_over_text,
+      :results_page_url
     )
   end
 

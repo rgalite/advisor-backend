@@ -30,4 +30,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+
+  questions:
+    default_skip_text: 'Skip this question'
+
+  advisors:
+    default_greeting_text: Hello, let me help you choosing your product! :)
+    default_results_text: Coool! I found some products!
+    default_continue_text: Alright, what do you want to do now?
+    default_results_page_text: Take me to the results page, please.
+    default_start_over_text: Let's start over!

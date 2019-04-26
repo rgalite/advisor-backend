@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_134205) do
+ActiveRecord::Schema.define(version: 2019_04_26_124210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 2019_04_25_134205) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", null: false
+    t.string "greeting_text", null: false
+    t.string "results_text", null: false
+    t.string "continue_text", null: false
+    t.string "results_page_text", null: false
+    t.string "start_over_text", null: false
+    t.string "results_page_url"
     t.index ["user_id"], name: "index_advisors_on_user_id"
   end
 
@@ -33,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_04_25_134205) do
     t.integer "sort_order", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "skippable", default: false, null: false
+    t.string "skip_text", null: false
     t.index ["advisor_id", "sort_order"], name: "index_questions_on_advisor_id_and_sort_order", unique: true
     t.index ["advisor_id"], name: "index_questions_on_advisor_id"
     t.index ["sort_order"], name: "index_questions_on_sort_order"
