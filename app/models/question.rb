@@ -2,7 +2,7 @@ class Question < ApplicationRecord
   belongs_to :advisor
 
   before_create :set_sort_order
-  before_validate :set_skip_text, on: :create
+  before_validation :set_skip_text, on: :create
 
   validates :content, presence: true
   validates :algolia_facet_name, presence: true

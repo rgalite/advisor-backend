@@ -2,8 +2,8 @@ class Advisor < ApplicationRecord
   belongs_to :user
   has_many :questions
 
-  before_validate :set_default_text, on: :create
-  before_validate :set_results_page_url, on: :create
+  before_validation :set_default_text, on: :create
+  before_validation :set_results_page_url, on: :create
 
   validates :name, presence: true, uniqueness: true
   validates :algolia_app_id, presence: true

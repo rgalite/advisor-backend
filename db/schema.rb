@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_124210) do
+ActiveRecord::Schema.define(version: 2019_04_26_124403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_04_26_124210) do
     t.string "continue_text", null: false
     t.string "results_page_text", null: false
     t.string "start_over_text", null: false
-    t.string "results_page_url"
+    t.string "results_page_url", null: false
     t.index ["user_id"], name: "index_advisors_on_user_id"
   end
 
