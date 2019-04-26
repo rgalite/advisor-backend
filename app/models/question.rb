@@ -10,7 +10,7 @@ class Question < ApplicationRecord
 
   private
   def set_sort_order
-    self.sort_order = advisor.questions.order(sort_order: :desc).limit(1).pluck(:sort_order).first + 1
+    self.sort_order = (advisor.questions.order(sort_order: :desc).limit(1).pluck(:sort_order).first || 0) + 1
   end
 
   def set_skip_text
