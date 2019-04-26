@@ -21,7 +21,6 @@ class Api::V1::QuestionsController < ApplicationController
     params.require(:question).permit(
       :content,
       :algolia_facet_name,
-      :sort_order
     )
   end
 end
