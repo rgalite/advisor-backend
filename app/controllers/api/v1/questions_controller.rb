@@ -9,7 +9,8 @@ class Api::V1::QuestionsController < ApplicationController
   end
 
   def destroy
-    head :ok
+    current_question.destroy!
+    head :no_content
   end
 
   private
